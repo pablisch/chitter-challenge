@@ -1,4 +1,4 @@
-# Chitter Challenge by Pablo Joyce
+# Chitter Challenge by Pablo Joyce (local)
 
 This project uses:
 * Ruby
