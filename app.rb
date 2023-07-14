@@ -9,6 +9,10 @@ DatabaseConnection.connect
 
 class Application < Sinatra::Base
 
+  before do
+    headers({ 'Content-Security-Policy' => "frame-ancestors https://pablisch.github.io" })
+  end
+
   enable :sessions # allows users sessions
 
   # This allows the app code to refresh
