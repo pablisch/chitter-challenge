@@ -10,7 +10,7 @@ DatabaseConnection.connect
 class Application < Sinatra::Base
 
   before do
-    headers({ 'Content-Security-Policy' => "frame-ancestors https://pablisch.github.io http://localhost:*" })
+    headers({ 'Content-Security-Policy' => "frame-ancestors https://pablisch.github.io http://localhost:* http://127.0.0.1:*" })
   end
 
   enable :sessions # allows users sessions
