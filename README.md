@@ -76,12 +76,12 @@ createdb chitter_test
 ```
 Create the tables in the databases:
 ```bash 
-psql -h 127.0.0.1 chitter < spec/tables.sql
+psql -h 127.0.0.1 chitter < spec/crypt_tables.sql
 psql -h 127.0.0.1 chitter_test < spec/tables.sql
 ```
 Populate the test database with seed data:
 ```bash
-psql -h 127.0.0.1 chitter < spec/seeds.sql
+psql -h 127.0.0.1 chitter < spec/crypt_seeds.sql
 psql -h 127.0.0.1 chitter_test < spec/seeds.sql
 ```
 Start the development server:

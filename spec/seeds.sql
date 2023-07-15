@@ -15,3 +15,20 @@ INSERT INTO peeps ("body", "time", "tags", "user_id") VALUES
 ('Today I meditated', '2023-04-06 18:00:00', '#meditate, #caleb', 3),
 ('Today I relaxed', '2023-04-07 19:00:00', '#relax, #billy', 2)
 ;
+
+-- Ensure that your postgres server is accessable at the IP address 127.0.0.1.
+-- Create the postgreSQL databases for running and testing the project:
+-- ```bash
+-- createdb chitter
+-- createdb chitter_test
+-- ```
+-- Create the tables in the databases:
+-- ```bash 
+-- psql -h 127.0.0.1 chitter < spec/crypt_tables.sql
+-- psql -h 127.0.0.1 chitter_test < spec/tables.sql
+-- ```
+-- Populate the test database with seed data:
+-- ```bash
+-- psql -h 127.0.0.1 chitter < spec/crypt_seeds.sql
+-- psql -h 127.0.0.1 chitter_test < spec/seeds.sql
+-- ```
