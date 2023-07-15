@@ -26,12 +26,6 @@ INSERT INTO users ("name", "username", "email", "password") VALUES
 ('Caleb Tomlinson', 'Caleb', 'caleb@email.com', '$2a$12$a/Sg0TiHT7uXxsr4oWDfFu5DEzJrTDSPqkie3v3iYDcKOXb7D07j6')
 ;
 
-INSERT INTO users ("name", "username", "email", "password") VALUES
-('Amber Thompson', 'Amber', 'amber@example.com', 'Password123'),
-('Billy Thompkins', 'Billy', 'billy@example.com', 'Password123'),
-('Caleb Tomlinson', 'Caleb', 'caleb@example.com', 'Password123')
-;
-
 INSERT INTO peeps ("body", "time", "tags", "user_id") VALUES
 ('Today I learned how to make SQL queries to get information from relational databases. It is so interesting! I cannnot wait to do something with this!', '2023-04-01 13:00:00', '#code, #render, #deploy, #amber', 1),
 ('Today I ate a whole cheesecake by myself. It was really delicious but now I feel quite sick and full of cheesecake and regret.', '2023-04-02 14:00:00', '#food, #sick, #billy', 2),
