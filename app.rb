@@ -32,15 +32,26 @@ class Application < Sinatra::Base
   # end
 
   get '/' do
-    repo = PeepRepository.new
-    peeps = repo.all_with_names
-    @peep_info = peeps.map{ |peep| [peep.username, peep.time, peep.body, peep.tags, peep.name]}.reverse
-    if DatabaseConnection.connect
+    if DatabaseConnection.connected?
+      repo = PeepRepository.new
+      peeps = repo.all_with_names
+      @peep_info = peeps.map{ |peep| [peep.username, peep.time, peep.body, peep.tags, peep.name]}.reverse
       return erb(:index)
     else
-      return "The web service is spinning up. Please wait a moment."
+      return erb(:loading)  # Display the loading page
     end
   end
+
+  # get '/' do
+  #   repo = PeepRepository.new
+  #   peeps = repo.all_with_names
+  #   @peep_info = peeps.map{ |peep| [peep.username, peep.time, peep.body, peep.tags, peep.name]}.reverse
+  #   if DatabaseConnection.connect
+  #     return erb(:index)
+  #   else
+  #     return "The web service is spinning up. Please wait a moment."
+  #   end
+  # end
 
   get '/peeps' do
     @user_id = session[:user_id] 

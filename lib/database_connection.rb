@@ -45,4 +45,10 @@ class DatabaseConnection
     end
     @connection.exec_params(query, params)
   end
+
+  def self.connected?
+    # Implement a method to check if the connection is established,
+    # for example, by checking if the connection object is not nil.
+    !@connection.nil?
+  end
 end
