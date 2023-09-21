@@ -24,11 +24,22 @@ class Application < Sinatra::Base
     also_reload 'lib/peep_repository'
   end
 
+  # get '/' do
+  #   repo = PeepRepository.new
+  #   peeps = repo.all_with_names
+  #   @peep_info = peeps.map{ |peep| [peep.username, peep.time, peep.body, peep.tags, peep.name]}.reverse
+  #   return erb(:index)
+  # end
+
   get '/' do
     repo = PeepRepository.new
     peeps = repo.all_with_names
     @peep_info = peeps.map{ |peep| [peep.username, peep.time, peep.body, peep.tags, peep.name]}.reverse
-    return erb(:index)
+    if DatabaseConnection.connected?
+      return erb(:index)
+    else
+      return "The web service is spinning up. Please wait a moment."
+    end
   end
 
   get '/peeps' do
