@@ -35,7 +35,7 @@ class Application < Sinatra::Base
     repo = PeepRepository.new
     peeps = repo.all_with_names
     @peep_info = peeps.map{ |peep| [peep.username, peep.time, peep.body, peep.tags, peep.name]}.reverse
-    if DatabaseConnection.connection
+    if DatabaseConnection.connect
       return erb(:index)
     else
       return "The web service is spinning up. Please wait a moment."
