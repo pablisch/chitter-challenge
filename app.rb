@@ -20,8 +20,7 @@ class Application < Sinatra::Base
   end
 
   before do
-    # headers({ 'Content-Security-Policy' => "frame-ancestors https://pablisch.github.io" })
-    headers({ 'Content-Security-Policy' => "frame-ancestors https://pablisch.github.io http://localhost:* http://127.0.0.1:*" }) // FOR LOCAL TESTING
+    headers({ 'Content-Security-Policy' => "frame-ancestors https://pablisch.github.io http://localhost:* http://127.0.0.1:*" })
   end
 
   enable :sessions # allows users sessions
