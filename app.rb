@@ -9,6 +9,11 @@ DatabaseConnection.connect
 
 class Application < Sinatra::Base
 
+  # before do
+  #   # headers({ 'Content-Security-Policy' => "frame-ancestors https://pablisch.github.io" })
+  #   headers({ 'Content-Security-Policy' => "frame-ancestors https://pablisch.github.io http://localhost:* http://localhost:5500 http://127.0.0.1:* http://127.0.0.1:5500" }) // FOR LOCAL TESTING
+  # end
+
   enable :sessions # allows users sessions
 
   # This allows the app code to refresh
@@ -24,6 +29,18 @@ class Application < Sinatra::Base
     peeps = repo.all_with_names
     @peep_info = peeps.map{ |peep| [peep.username, peep.time, peep.body, peep.tags, peep.name]}.reverse
     return erb(:index)
+  end
+
+  get '/health-check' do
+    content_type :json
+  
+    if DatabaseConnection.connected?
+      status 200
+      { status: 'ok', message: 'Application is healthy' }.to_json
+    else
+      status 500
+      { status: 'error', message: 'Application is not healthy' }.to_json
+    end
   end
 
   get '/peeps' do
