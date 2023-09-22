@@ -22,3 +22,5 @@ gem "rack-test", "~> 2.1"
 gem "rackup", "~> 1.0"
 
 gem "bcrypt", "~> 3.1"
+
+gem "rack-cors"
