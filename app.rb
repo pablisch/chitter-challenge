@@ -10,18 +10,18 @@ DatabaseConnection.connect
 
 class Application < Sinatra::Base
 
-  # Use the CORS middleware with the desired configuration
-  use Rack::Cors do
-    # Allow requests from your development environment
-    allow do
-      origins 'http://127.0.0.1:5500' # Adjust to match your development environment
-      resource '*', headers: :any, methods: [:get, :post, :put, :delete, :options]
-    end
-  end
+  # # Use the CORS middleware with the desired configuration
+  # use Rack::Cors do
+  #   # Allow requests from your development environment
+  #   allow do
+  #     origins 'http://127.0.0.1:5500' # Adjust to match your development environment
+  #     resource '*', headers: :any, methods: [:get, :post, :put, :delete, :options]
+  #   end
+  # end
 
   before do
-    # headers({ 'Content-Security-Policy' => "frame-ancestors https://pablisch.github.io" })
-    headers({ 'Content-Security-Policy' => "frame-ancestors https://pablisch.github.io http://localhost:* http://127.0.0.1:*" }) // FOR LOCAL TESTING
+    headers({ 'Content-Security-Policy' => "frame-ancestors https://pablisch.github.io" })
+    # headers({ 'Content-Security-Policy' => "frame-ancestors https://pablisch.github.io http://localhost:* http://127.0.0.1:*" }) // FOR LOCAL TESTING
   end
 
   enable :sessions # allows users sessions
@@ -52,17 +52,17 @@ class Application < Sinatra::Base
   #   end
   # end
 
-  get '/health-check' do
-    content_type :json
+  # get '/health-check' do
+  #   content_type :json
   
-    if DatabaseConnection.connected?
-      status 200
-      { status: 'ok', message: 'Application is healthy' }.to_json
-    else
-      status 500
-      { status: 'error', message: 'Application is not healthy' }.to_json
-    end
-  end
+  #   if DatabaseConnection.connected?
+  #     status 200
+  #     { status: 'ok', message: 'Application is healthy' }.to_json
+  #   else
+  #     status 500
+  #     { status: 'error', message: 'Application is not healthy' }.to_json
+  #   end
+  # end
 
   get '/peeps' do
     @user_id = session[:user_id] 
