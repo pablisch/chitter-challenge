@@ -96,6 +96,8 @@ Be default uses can see all messages posted by all users, but cannot post messag
 
 Follow the link to register as a user, you will then be prompted to redirect to login.
 
+For quick example use, you can log in as any of the example users, `amber@example.com`, `billy@example.com` or `caleb@example.com` with the password `Password123`.
+
 After login, you will be redirected to the home page where you can post a new message. messages posted by all users will appear here in reverse chronological order.
 
 ## Running the tests
